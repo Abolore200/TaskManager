@@ -1,0 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
+*,::after,::before{margin:0;padding:0;outline:none;box-sizing:border-box;}
+html,body{font-family:'Lucida Sans','Open Sans' ,'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+html,body{font-family:'Poppins';}
