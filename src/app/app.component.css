@@ -1,0 +1,13 @@
+.app-container{width:100%;}
+.container-flex{display:flex;}
+.sidebar-container{position:fixed;height:100%;width:20%;background-color:#333333;z-index:1;}
+.sidebar-container{padding:20px 0 0;overflow-y:auto;}
+.router-container{width:80%;margin-left:auto;height:auto;}
+.sidebar-container *{color:#fff;}
+.menu-head{padding:0 0 0 30px;width:fit-content;}
+.menu-head a{font-weight:600;font-size:1.5rem;}
+.menu-links{margin:30px 0 0;padding:0 0 0 30px;}
+.menu-links ul{display:flex;flex-direction:column;gap:10px 0;}
+.menu-links ul li{list-style:none;width:100%;}
+.menu-links ul li a{padding:10px 0;width:100%;display:block;}
+.menu-links ul li a.active{border-right:5px solid #db4444;}

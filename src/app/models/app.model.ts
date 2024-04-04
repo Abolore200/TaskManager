@@ -1,7 +1,7 @@
 export class Task{
     title:string;
     description:string;
-    date: Date;
+    date:string;
     priority:string;
     status:string
 }

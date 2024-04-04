@@ -13,23 +13,24 @@ export class AppService {
   taskArray:Task[] = []
 
   //push task to Tasks array in session storage
-  saveTaskToSessionStorage(value:Task){
+  saveTaskToSessionStorage(tasks:Task){
     let storage = this.getTaskFromSessionStorage()
-    storage.push(value)
+    storage.push(tasks)
     sessionStorage.setItem('tasks', JSON.stringify(storage))
   }
 
   //get task from Tasks array in session storage
   getTaskFromSessionStorage(){
     let taskSessionStorage = sessionStorage.getItem('tasks')
-    if(taskSessionStorage === null){
+    if(taskSessionStorage === null || taskSessionStorage === undefined){
       this.taskArray = []
     } else {
       this.taskArray = JSON.parse(taskSessionStorage)
     } return this.taskArray
   }
 
+  //
   tasksObs():Observable<Task[]>{
-    return of(this.taskArray)
+    return of(this.getTaskFromSessionStorage())
   }
 }

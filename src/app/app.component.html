@@ -1,3 +1,18 @@
 <div class="app-container">
-  
+  <div class="container-flex">
+    <div class="sidebar-container">
+      <div class="menu-head">
+        <a [routerLink]="''">Task Manager</a>
+      </div>
+      <div class="menu-links">
+        <ul>
+          <li><a href="" [routerLink]="''" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">Create Task</a></li>
+          <li><a href="" [routerLink]="'lists'" [routerLinkActive]="'active'">View Tasks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
