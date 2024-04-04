@@ -16,13 +16,15 @@ export class AppService {
   saveTaskToSessionStorage(tasks:Task){
     let storage = this.getTaskFromSessionStorage()
     storage.push(tasks)
-    sessionStorage.setItem('tasks', JSON.stringify(storage))
+    if(typeof sessionStorage !== 'undefined'){
+      sessionStorage.setItem('tasks', JSON.stringify(storage))
+    }
   }
 
   //get task from Tasks array in session storage
   getTaskFromSessionStorage(){
     let taskSessionStorage = sessionStorage.getItem('tasks')
-    if(taskSessionStorage === null || taskSessionStorage === undefined){
+    if(taskSessionStorage === null){
       this.taskArray = []
     } else {
       this.taskArray = JSON.parse(taskSessionStorage)

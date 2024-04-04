@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../services/app.service';
+import { Task } from '../models/app.model';
 
 @Component({
   selector: 'app-lists',
@@ -9,11 +10,13 @@ import { AppService } from '../services/app.service';
 export class ListsComponent implements OnInit {
   constructor(private app: AppService){}
 
+  tasks:Task[] = []
+
   ngOnInit(): void {
-    this.app.tasksObs().subscribe(val => {
-      if(val !== undefined){
-        console.log(val)
-      }
-    })
+    // this.app.tasksObs().subscribe(tasks => {
+    //   if(tasks.length !== 0 ){
+    //     console.log(tasks)
+    //   }
+    // })
   }
 }

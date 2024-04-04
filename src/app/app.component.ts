@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private app: AppService){}
 
   ngOnInit(): void {
-    this.app.tasksObs().subscribe(val => {
-      // console.log(val)
-    })
+    
   }
 }
