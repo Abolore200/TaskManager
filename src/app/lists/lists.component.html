@@ -1,1 +1,36 @@
-<p>lists works!</p>
+<div class="container">
+    <div class="list-header">
+        <p>List of Tasks</p>
+    </div>
+    <div class="task-table-container">
+        <div class="task-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasksArr">
+                        <td>{{task.title}}</td>
+                        <td *ngIf="task.description.length > 30 else taskWord">{{task.description}}...</td>
+                        <td>{{task.date}}</td>
+                        <td>{{task.priority}}</td>
+                        <td>{{task.status}}</td>
+                        <td><button>edit</button></td>
+                        <td><button>update</button></td>
+                        <ng-template #taskWord>
+                            <td>{{task.description}}</td>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
