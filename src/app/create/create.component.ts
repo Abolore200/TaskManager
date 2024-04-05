@@ -22,6 +22,9 @@ export class CreateComponent implements OnInit {
     this.currentDate = new Date().toISOString().split('T')[0];
   }
 
+  //display fixed header
+  showFixedHeader:boolean = false
+
   //add task to session storage
   addTask(){
     if(this.title || this.description || this.date || this.priority || this.status){
@@ -33,11 +36,22 @@ export class CreateComponent implements OnInit {
         priority: this.priority,
         status: this.status
       }
-
       //add task to session storage
       this.app.saveTaskToSessionStorage(task)
-
     }
+
+    this.showFixedHeader = true
+
+    setTimeout(() => {
+      this.title = '';
+      this.description = '';
+      this.date = '';
+      this.priority = ''
+      this.status = ''
+
+      //hide fixed header
+      this.showFixedHeader = false
+    },2000)
   }
 
   //generate ID number for each task

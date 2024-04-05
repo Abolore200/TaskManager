@@ -27,14 +27,19 @@ export class ListsComponent implements OnInit {
   //delete task and remove from session storage
   deleteTask(id:number | undefined){
 
-    //remove task from session storage
-    this.app.removeTaskFromSessionStorage(id)
+    //confirm alert to delete task
+    const response = confirm('Are you sure you want to delete?')
 
-    //remove task from TaskArr
-    this.tasksArr.forEach((taskID, index) => {
-      if(taskID.id === id){
-        this.tasksArr.splice(index, 1)
-      }
-    })
+    if(response){
+      //remove task from session storage
+      this.app.removeTaskFromSessionStorage(id)
+
+      //remove task from TaskArr
+      this.tasksArr.forEach((taskID, index) => {
+        if(taskID.id === id){
+          this.tasksArr.splice(index, 1)
+        }
+      })
+    }
   }
 }

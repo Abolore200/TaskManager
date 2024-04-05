@@ -3,10 +3,10 @@
         <div class="back-btn">
             <a routerLink="/lists"><i class="fa-solid fa-arrow-left"></i> Back</a>
         </div>
-        <div class="view-container-header">
+        <div class="view-container-header" *ngIf="false">
             <p>Task: &nbsp; <span>{{tasks.title}}</span></p>
         </div>
-        <div class="view-container">
+        <div class="view-container" style="margin:30px 0 0;">
             <div class="form">
                 <div class="form-flex">
                     <div class="title-card form-card">
@@ -54,11 +54,11 @@
                     </div>
                 </div>
                 <div class="btn-container">
-                    <div class="edit-container btn">
+                    <div class="edit-container btn" *ngIf="!edit">
                         <button type="button" (click)="editTask()" [disabled]="edit" [routerLink]="[]" [queryParams]="{edit:true}">Edit</button>
                     </div>
-                    <div class="save-container btn">
-                        <button type="button" (click)="updateTask(tasks)" [disabled]="!edit" [routerLink]="[]">Update</button>
+                    <div class="save-container btn" *ngIf="edit">
+                        <button type="button" (click)="updateTask(tasks)"  [disabled]="!edit" [routerLink]="[]">Update</button>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,10 @@ table thead tr th{padding:10px 15px 10px 5px;}
 table tbody tr td{padding:10px 20px 10px 5px;}
 table tbody tr td span{color:#fff;padding:3px 10px;border-radius:20px;font-size:.8rem;}
 table tbody tr td:nth-child(4){text-transform:capitalize;}
-table tbody tr td button{padding:3px 20px;color:#000;border-radius:4px;font-family:'Inter';font-weight:600;}
+table tbody tr td button{padding:4px 20px;color:#000;border-radius:4px;font-family:'Inter';font-weight:600;}
+table tbody tr td button{border:none;color:#fff;cursor:pointer;}
+table tbody tr td:nth-child(6) button{background-color:#292b2c;}
+table tbody tr td:nth-child(7) button{background-color:#d9534f;}
 .radio-flex{display:flex;align-items:center;gap:0 5px;}
 .filter-container{margin:20px 0 0;}
 .radio-filter-flex{display:flex;align-items:center;gap:0 20px;}
