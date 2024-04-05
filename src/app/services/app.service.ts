@@ -40,10 +40,6 @@ export class AppService {
   //remove task from session storage
   removeTaskFromSessionStorage(id: number | undefined){
 
-    // const storage = this.getTaskFromSessionStorage()
-    // storage.forEach((taskID, index) => {
-
-    // })
     this.tasksObs().subscribe(storage => {
       storage.forEach((taskID, index) => {
         if(taskID.id === id){
@@ -51,6 +47,23 @@ export class AppService {
         }
       })
   
+      sessionStorage.setItem('tasks', JSON.stringify(storage))
+    })
+  }
+
+  //update task
+  updateTaskInSessionStorage(task:Task){
+    this.tasksObs().subscribe(storage => {
+      storage.forEach((taskID) => {
+        if(taskID.id === task.id){
+          taskID.title = task.title
+          taskID.date = task.date
+          taskID.priority = task.priority
+          taskID.status = task.status
+          taskID.description = task.description
+        }
+      })
+
       sessionStorage.setItem('tasks', JSON.stringify(storage))
     })
   }

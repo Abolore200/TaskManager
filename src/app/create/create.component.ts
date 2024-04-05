@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from '../services/app.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AppService } from '../services/app.service';
   styleUrl: './create.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
   constructor(private app: AppService){}
   title:string;
   description:string;
@@ -15,7 +15,14 @@ export class CreateComponent {
   priority:string;
   status:string
 
-  //add task
+  currentDate:string
+
+  ngOnInit(): void {
+    //disable previous date
+    this.currentDate = new Date().toISOString().split('T')[0];
+  }
+
+  //add task to session storage
   addTask(){
     if(this.title || this.description || this.date || this.priority || this.status){
       const task = {
@@ -35,8 +42,18 @@ export class CreateComponent {
 
   //generate ID number for each task
   createTaskId(){
-    if(this.app.getTaskFromSessionStorage()){
-      return this.app.getTaskFromSessionStorage().length + 1
-    }
+    const time = new Date().toTimeString()
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth()
+    const day = new Date().getDay()
+
+    //random id generator
+    return this.title.substring(0,3) + 
+    this.description.substring(0,5) + 
+    this.date.substring(3,7) +
+     time.substring(0,8) + 
+     String(year).substring(0,3) + 
+     String(month).substring(0,1) + 
+     String(day).substring(0,1)
   }
 }

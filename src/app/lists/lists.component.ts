@@ -19,7 +19,6 @@ export class ListsComponent implements OnInit {
         this.tasksArr = tasks
       }
     })
-    // this.tasksArr = this.app.getTaskFromSessionStorage()
   }
 
 

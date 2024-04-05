@@ -1,6 +1,6 @@
 .app-container{width:100%;}
 .container-flex{display:flex;}
-.sidebar-container{position:fixed;height:100%;width:20%;background-color:#333333;z-index:1;}
+.sidebar-container{position:fixed;height:100%;width:20%;background-color:#333333;z-index:1;border-right:2px solid #db4444;}
 .sidebar-container{padding:20px 0 0;overflow-y:auto;}
 .router-container{width:80%;margin-left:auto;height:auto;}
 .sidebar-container *{color:#fff;}

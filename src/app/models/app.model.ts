@@ -1,5 +1,5 @@
 export class Task{
-    id?:number | undefined;
+    id?:number | any;
     title:string;
     description:string;
     date:string;

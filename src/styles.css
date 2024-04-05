@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 *,::after,::before{margin:0;padding:0;outline:none;box-sizing:border-box;}
 html,body{font-family:'Lucida Sans','Open Sans' ,'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
-html,body{font-family:'Poppins';}
+html,body{font-family:'Poppins';scroll-behavior:smooth;}
 input:not([type="checkbox"],[type="radio"]){-webkit-border-radius:0;border-radius:0;-webkit-appearance:none;appearance:none;font-size:1rem;}
+select,textarea{-webkit-border-radius:0;border-radius:0;font-size:1rem;}
 a{text-decoration:none;color:initial;}
+* button{color:#000;}

@@ -19,13 +19,13 @@
                 <tbody>
                     <tr *ngFor="let task of tasksArr">
                         <td>{{task.title}}</td>
-                        <td *ngIf="task.description.length > 30 else taskWord">{{task.description}}...</td>
+                        <td *ngIf="task.description.length > 30 else taskWord">{{task.description.substring(0,30)}}...</td>
                         <td>{{task.date}}</td>
                         <td>{{task.priority}}</td>
                         <td>
                             <span [ngStyle]="{backgroundColor: task.status == 'completed' ? '#5cb85c' : task.status == 'progress' ? '#f0ad4e' : '#0275d8' }">{{task.status}}</span>
                         </td>
-                        <td><button>edit</button></td>
+                        <td><button [routerLink]="['/lists/view-task/', task.title]">view</button></td>
                         <td><button (click)="deleteTask(task.id)">delete</button></td>
                         <ng-template #taskWord>
                             <td>{{task.description}}</td>
