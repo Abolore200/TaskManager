@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewTaskComponent } from './view-task.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('ViewTaskComponent', () => {
   let component: ViewTaskComponent;
@@ -8,7 +9,21 @@ describe('ViewTaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewTaskComponent]
+      declarations: [ViewTaskComponent],
+
+      //added provider
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: (keys: string) => 'title'
+              }
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
     

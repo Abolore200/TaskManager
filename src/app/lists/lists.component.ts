@@ -13,6 +13,9 @@ export class ListsComponent implements OnInit {
 
   tasksArr:Task[] = []
 
+  filterStatus:string = 'all'
+  filterPriority:string = ''
+
   ngOnInit(): void {
     this.app.tasksObs().subscribe(tasks => {
       if(tasks.length !== 0){
@@ -21,7 +24,7 @@ export class ListsComponent implements OnInit {
     })
   }
 
-
+  //delete task and remove from session storage
   deleteTask(id:number | undefined){
 
     //remove task from session storage

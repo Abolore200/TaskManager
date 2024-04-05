@@ -1,69 +1,67 @@
 <ng-container *ngIf="tasks != undefined">
-<div class="container">
-    <div class="back-btn">
-        <a routerLink="/lists"><i class="fa-solid fa-arrow-left"></i> Back</a>
-    </div>
-    <div class="view-container-header">
-        <p>Task: &nbsp; <span>{{tasks.title}}</span></p>
-    </div>
-    <div class="view-container">
-        <div class="form">
-            <div class="form-flex">
-                <div class="title-card form-card">
-                    <p>Title:</p>
-                    <div class="task-title form-title">
-                        <p *ngIf="!edit">{{tasks.title}}</p>
-                        <input type="text" *ngIf="edit" id="title" [(ngModel)]="tasks.title">
+    <div class="container">
+        <div class="back-btn">
+            <a routerLink="/lists"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        </div>
+        <div class="view-container-header">
+            <p>Task: &nbsp; <span>{{tasks.title}}</span></p>
+        </div>
+        <div class="view-container">
+            <div class="form">
+                <div class="form-flex">
+                    <div class="title-card form-card">
+                        <p>Title:</p>
+                        <div class="task-title form-title">
+                            <p *ngIf="!edit">{{tasks.title}}</p>
+                            <input type="text" *ngIf="edit" id="title" [(ngModel)]="tasks.title">
+                        </div>
+                    </div>
+                    <div class="date-card form-card">
+                        <p>Due Date:</p>
+                        <div class="task-date form-title">
+                            <p *ngIf="!edit">{{tasks.date}}</p>
+                            <input type="date" *ngIf="edit" id="date" [(ngModel)]="tasks.date" [min]="currentDate">
+                        </div>
+                    </div>
+                    <div class="priority-card form-card">
+                        <p>Priority:</p>
+                        <div class="task-priority form-title">
+                            <p *ngIf="!edit">{{tasks.priority}}</p>
+                            <select id="priority" *ngIf="edit" [(ngModel)]="tasks.priority">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="status-card form-card">
+                        <p>Status:</p>
+                        <div class="task-status form-title">
+                            <p *ngIf="!edit">{{tasks.status}}</p>
+                            <select id="status" *ngIf="edit" [(ngModel)]="tasks.status">
+                                <option value="pending">Pending</option>
+                                <option value="in progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="description-card form-card">
+                        <p>Description:</p>
+                        <div class="task-description form-title">
+                            <p *ngIf="!edit">{{tasks.description}}</p>
+                            <textarea id="description" *ngIf="edit" [(ngModel)]="tasks.description" rows="5"></textarea>
+                        </div>
                     </div>
                 </div>
-                <div class="date-card form-card">
-                    <p>Due Date:</p>
-                    <div class="task-date form-title">
-                        <p *ngIf="!edit">{{tasks.date}}</p>
-                        <input type="date" *ngIf="edit" id="date" [(ngModel)]="tasks.date" [min]="currentDate">
+                <div class="btn-container">
+                    <div class="edit-container btn">
+                        <button type="button" (click)="editTask()" [disabled]="edit" [routerLink]="[]" [queryParams]="{edit:true}">Edit</button>
                     </div>
-                </div>
-                <div class="priority-card form-card">
-                    <p>Priority:</p>
-                    <div class="task-priority form-title">
-                        <p *ngIf="!edit">{{tasks.priority}}</p>
-                        <select id="priority" *ngIf="edit" [(ngModel)]="tasks.priority">
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
+                    <div class="save-container btn">
+                        <button type="button" (click)="updateTask(tasks)" [disabled]="!edit" [routerLink]="[]">Update</button>
                     </div>
-                </div>
-                <div class="status-card form-card">
-                    <p>Status:</p>
-                    <div class="task-status form-title">
-                        <p *ngIf="!edit">{{tasks.status}}</p>
-                        <select id="status" *ngIf="edit" [(ngModel)]="tasks.status">
-                            <option value="pending">Pending</option>
-                            <option value="in progress">In Progress</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="description-card form-card">
-                    <p>Description:</p>
-                    <div class="task-description form-title">
-                        <p *ngIf="!edit">{{tasks.description}}</p>
-                        <textarea id="description" *ngIf="edit" [(ngModel)]="tasks.description" rows="10"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-container">
-                <div class="edit-container btn">
-                    <button type="button" (click)="editTask()" [disabled]="edit" [routerLink]="[]" [queryParams]="{edit:true}">Edit</button>
-                </div>
-                <div class="save-container btn">
-                    <button type="button" (click)="updateTask(tasks)" [disabled]="!edit" [routerLink]="[]">Update</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </ng-container>
-
-<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, doloremque. -->

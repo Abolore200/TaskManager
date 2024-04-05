@@ -9,9 +9,6 @@ export class AppService {
 
   constructor() { }
 
-  //empty task array
-  // taskArray:Task[] = []
-
   //push task to Tasks array in session storage
   saveTaskToSessionStorage(tasks:Task){
     let storage = this.getTaskFromSessionStorage()
@@ -54,13 +51,13 @@ export class AppService {
   //update task
   updateTaskInSessionStorage(task:Task){
     this.tasksObs().subscribe(storage => {
-      storage.forEach((taskID) => {
-        if(taskID.id === task.id){
-          taskID.title = task.title
-          taskID.date = task.date
-          taskID.priority = task.priority
-          taskID.status = task.status
-          taskID.description = task.description
+      storage.forEach((taskObj) => {
+        if(taskObj.id === task.id){
+          taskObj.title = task.title
+          taskObj.date = task.date
+          taskObj.priority = task.priority
+          taskObj.status = task.status
+          taskObj.description = task.description
         }
       })
 

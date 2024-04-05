@@ -7,22 +7,24 @@ import { Task } from '../../models/app.model';
   selector: 'app-view-task',
   templateUrl: './view-task.component.html',
   styleUrl: './view-task.component.css',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  // providers: [AppService]
 })
 export class ViewTaskComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private app: AppService){}
+  constructor(private actRoute: ActivatedRoute, private app: AppService){}
 
   taskTitle:any
   tasks:any
   currentDate:string
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(param => {
-      this.taskTitle = param.get('title')
+    
+    //display clicked task
+    this.app.tasksObs().subscribe(taskArr => {
+      this.actRoute.paramMap.subscribe(param => {
+        this.taskTitle = param.get('title')
 
-      //display clicked task
-      this.app.tasksObs().subscribe(task => {
-        this.tasks = task.find(x => x.title == this.taskTitle)
+        this.tasks = taskArr.find(x => x.title == this.taskTitle)
       })
     })
 

@@ -2,6 +2,42 @@
     <div class="list-header">
         <p>List of Tasks</p>
     </div>
+    <div class="filter-container">
+        <div class="radio-filter-flex">
+            <div class="filter-all-note radio-flex">
+                <p>Filter By Status:</p>
+            </div>
+            <div class="radio-all radio-flex">
+                <input type="radio" name="status" id="all" [(ngModel)]="filterStatus" value="all">
+                <label for="all">All</label>
+            </div>
+            <div class="radio-pending radio-flex">
+                <input type="radio" name="status" id="pending" [(ngModel)]="filterStatus" value="pending">
+                <label for="pending">Pending</label>
+            </div>
+            <div class="radio-progress radio-flex">
+                <input type="radio" name="status" id="progress" [(ngModel)]="filterStatus" value="progress">
+                <label for="progress">In Progress</label>
+            </div>
+            <div class="radio-complete radio-flex">
+                <input type="radio" name="status" id="complete" [(ngModel)]="filterStatus" value="completed">
+                <label for="complete">Completed</label>
+            </div>
+        </div>
+    </div>
+    <div class="select-container">
+        <div class="select-note">
+            <p>Filter By Priority:</p>
+        </div>
+        <div class="select-priority">
+            <select name="priority" id="priority" [(ngModel)]="filterPriority">
+                <option value=""></option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+    </div>
     <div class="task-table-container">
         <div class="task-table">
             <table>
@@ -18,18 +54,22 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let task of tasksArr">
-                        <td>{{task.title}}</td>
-                        <td *ngIf="task.description.length > 30 else taskWord">{{task.description.substring(0,30)}}...</td>
-                        <td>{{task.date}}</td>
-                        <td>{{task.priority}}</td>
-                        <td>
-                            <span [ngStyle]="{backgroundColor: task.status == 'completed' ? '#5cb85c' : task.status == 'progress' ? '#f0ad4e' : '#0275d8' }">{{task.status}}</span>
-                        </td>
-                        <td><button [routerLink]="['/lists/view-task/', task.title]">view</button></td>
-                        <td><button (click)="deleteTask(task.id)">delete</button></td>
-                        <ng-template #taskWord>
-                            <td>{{task.description}}</td>
-                        </ng-template>
+                        <ng-container *ngIf="filterPriority === '' || task.priority.toLowerCase().includes(filterPriority)">
+                            <ng-container *ngIf="filterStatus === 'all' || task.status.toLowerCase().includes(filterStatus)">
+                                <td>{{task.title}}</td>
+                                <td *ngIf="task.description.length > 30 else taskWord">{{task.description.substring(0,30)}}...</td>
+                                <td>{{task.date}}</td>
+                                <td>{{task.priority}}</td>
+                                <td>
+                                    <span [ngStyle]="{backgroundColor: task.status == 'completed' ? '#5cb85c' : task.status == 'in progress' ? '#f0ad4e' : '#0275d8' }">{{task.status}}</span>
+                                </td>
+                                <td><button [routerLink]="['/lists/view-task/', task.title]">view</button></td>
+                                <td><button (click)="deleteTask(task.id)">delete</button></td>
+                                <ng-template #taskWord>
+                                    <td>{{task.description}}</td>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
                     </tr>
                 </tbody>
             </table>
@@ -39,3 +79,6 @@
         <p>No Task Found!</p>
     </div>
 </div>
+<ng-template #notFound>
+    <p>Not Found!</p>
+</ng-template>
