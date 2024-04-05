@@ -14,10 +14,25 @@ export class ListsComponent implements OnInit {
   tasksArr:Task[] = []
 
   ngOnInit(): void {
-    if(sessionStorage !== undefined || sessionStorage !== null){
-      this.app.tasksObs().subscribe(tasks => {
+    this.app.tasksObs().subscribe(tasks => {
+      if(tasks.length !== 0){
         this.tasksArr = tasks
-      })
-    }
+      }
+    })
+    // this.tasksArr = this.app.getTaskFromSessionStorage()
+  }
+
+
+  deleteTask(id:number | undefined){
+
+    //remove task from session storage
+    this.app.removeTaskFromSessionStorage(id)
+
+    //remove task from TaskArr
+    this.tasksArr.forEach((taskID, index) => {
+      if(taskID.id === id){
+        this.tasksArr.splice(index, 1)
+      }
+    })
   }
 }

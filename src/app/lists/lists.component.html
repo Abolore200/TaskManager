@@ -9,7 +9,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Date</th>
+                        <th>Due Date</th>
                         <th>Priority</th>
                         <th>Status</th>
                         <th></th>
@@ -22,9 +22,11 @@
                         <td *ngIf="task.description.length > 30 else taskWord">{{task.description}}...</td>
                         <td>{{task.date}}</td>
                         <td>{{task.priority}}</td>
-                        <td>{{task.status}}</td>
+                        <td>
+                            <span [ngStyle]="{backgroundColor: task.status == 'completed' ? '#5cb85c' : task.status == 'progress' ? '#f0ad4e' : '#0275d8' }">{{task.status}}</span>
+                        </td>
                         <td><button>edit</button></td>
-                        <td><button>update</button></td>
+                        <td><button (click)="deleteTask(task.id)">delete</button></td>
                         <ng-template #taskWord>
                             <td>{{task.description}}</td>
                         </ng-template>
@@ -32,5 +34,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="empty-task-array-container" *ngIf="tasksArr.length === 0">
+        <p>No Task Found!</p>
     </div>
 </div>

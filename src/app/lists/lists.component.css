@@ -6,8 +6,13 @@
 .task-table::-webkit-scrollbar-track{}
 .task-table::-webkit-scrollbar-thumb{} */
 .task-table :is(table){width:100%;}
+.empty-task-array-container{margin:50px auto;text-align:center;}
+.empty-task-array-container p{font-size:1.5rem;font-weight:500;}
 table{border-collapse:collapse;border-spacing:10px;}
 table :is(thead tr th, tbody tr td){text-align:start;white-space:nowrap;}
 table tbody tr:nth-child(odd){background-color:#f3f3f3;}
 table thead tr th{padding:10px 0 10px 5px;}
 table tbody tr td{padding:10px 20px 10px 5px;}
+table tbody tr td span{color:#fff;padding:3px 10px;border-radius:20px;font-size:.8rem;}
+table tbody tr td:nth-child(4){text-transform:capitalize;}
+table tbody tr td button{padding:3px 20px;color:#000;border-radius:4px;font-family:'Inter';font-weight:600;}
