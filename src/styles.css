@@ -6,4 +6,4 @@ input:not([type="checkbox"],[type="radio"]){-webkit-border-radius:0;border-radiu
 select,textarea{-webkit-border-radius:0;border-radius:0;font-size:1rem;}
 a{text-decoration:none;color:initial;}
 * button{color:#000;}
-input:focus,select:focus,button:focus,textarea:focus{outline:2px solid #db4444;}
+/* input:focus,select:focus,button:focus,textarea:focus{outline:2px solid #db4444;} */

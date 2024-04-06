@@ -20,6 +20,9 @@ input[type="date"]{font-family:'Inter';}
 .fixed-container{transform:translateY(-200px);transition:all .2s ease-in-out;}
 .fixed-container.show{transform:translateY(0px);}
 .fixed-container p{text-align:center;color:#fff;z-index:2;}
+.form-input span{display:flex;align-items:center;gap:0 10px;}
+.form-input span,.form-input span i{font-size:.9em;color:#d9534f;}
+input.ng-touched.ng-invalid,textarea.ng-touched.ng-invalid,select.ng-touched.ng-invalid{border:1px solid #d9534f;}
 
 @media screen and (max-width:768px) {
     .container{width:100%;margin:100px auto 150px;}

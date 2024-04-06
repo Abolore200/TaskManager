@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from '../services/app.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -9,12 +10,8 @@ import { AppService } from '../services/app.service';
 })
 export class CreateComponent implements OnInit {
   constructor(private app: AppService){}
-  title:string;
-  description:string;
-  date: string;
-  priority:string;
-  status:string
 
+  formTitle:string;
   currentDate:string
 
   ngOnInit(): void {
@@ -26,48 +23,43 @@ export class CreateComponent implements OnInit {
   showFixedHeader:boolean = false
 
   //add task to session storage
-  addTask(){
-    if(this.title || this.description || this.date || this.priority || this.status){
-      const task = {
-        id: this.createTaskId(),
-        title: this.title,
-        description: this.description,
-        date: this.date,
-        priority: this.priority,
-        status: this.status
-      }
-      //add task to session storage
-      this.app.saveTaskToSessionStorage(task)
+  addTask(form: NgForm){
+    const task = {
+      id: this.createTaskId(form),
+      title: form.value.title,
+      description: form.value.description,
+      date: form.value.date,
+      priority: form.value.priority,
+      status: form.value.status
     }
 
+    //add task to session storage
+    this.app.saveTaskToSessionStorage(task)
+
+    //display header
     this.showFixedHeader = true
 
     setTimeout(() => {
-      this.title = '';
-      this.description = '';
-      this.date = '';
-      this.priority = ''
-      this.status = ''
-
+      form.reset()
       //hide fixed header
       this.showFixedHeader = false
     },2000)
+
+    //
+    this.formTitle = form.value.title
   }
 
   //generate ID number for each task
-  createTaskId(){
-    const time = new Date().toTimeString()
+  createTaskId(form: NgForm){
+    const time = new Date().toTimeString().replaceAll(':','').replaceAll(' ','').substring(0,6)
     const year = new Date().getFullYear()
     const month = new Date().getMonth()
     const day = new Date().getDay()
-
-    //random id generator
-    return this.title.substring(0,3) + 
-    this.description.substring(0,5) + 
-    this.date.substring(3,7) +
-     time.substring(0,8) + 
-     String(year).substring(0,3) + 
-     String(month).substring(0,1) + 
-     String(day).substring(0,1)
+    const second = new Date().getMilliseconds()
+    const formTitle = form.value.title.replace(' ','').substring(0,3)
+    const formDescription = form.value.description.replace(' ','').substring(0,3)
+    const formDate= form.value.date.replaceAll('-','').substring(4,8)
+    const ID = time + second + formTitle + year + formDescription + month + formDate + day 
+    return ID
   }
 }
