@@ -15,4 +15,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  //toogle menu header
+  toggleMenu:boolean = false
+  displayMenu(menu:HTMLDivElement){
+    menu.classList.toggle('show')
+  }
+
+  hideMenu(menuLink:HTMLDivElement){
+    if(menuLink.classList.contains('show')){
+      menuLink.classList.remove('show')
+    }
+  }
 }

@@ -17,3 +17,10 @@
 .btn-container .btn button{font-size:1rem;}
 .btn-container .btn button:hover{background-color:rgba(219, 68, 68,.5);}
 .btn-container .btn button:disabled{background-color:rgba(219, 68, 68,.5);}
+
+@media screen and (max-width:768px) {
+    .container{width:100%;}
+    .form-title :is(input, select, textarea){width:100%;}
+    .view-container-header p{display:flex;}
+    .view-container-header p span{font-size:inherit;}
+}

@@ -3,11 +3,12 @@
     <div class="sidebar-container">
       <div class="menu-head">
         <a [routerLink]="''">Task Manager</a>
+        <button (click)="displayMenu(menuLink)"><i class="fa-solid fa-bars"></i></button>
       </div>
-      <div class="menu-links">
+      <div class="menu-links" #menuLink>
         <ul>
-          <li><a href="" [routerLink]="''" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">Create Task</a></li>
-          <li><a href="" [routerLink]="'lists'" [routerLinkActive]="'active'">View Tasks</a></li>
+          <li><a (click)="hideMenu(menuLink)" [routerLink]="''" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">Create Task</a></li>
+          <li><a (click)="hideMenu(menuLink)" [routerLink]="'lists'" [routerLinkActive]="'active'">View Tasks</a></li>
         </ul>
       </div>
     </div>
