@@ -58,7 +58,7 @@
                         <button type="button" (click)="editTask()" [disabled]="edit" [routerLink]="[]" [queryParams]="{edit:true}">Edit</button>
                     </div>
                     <div class="save-container btn" *ngIf="edit">
-                        <button type="button" (click)="updateTask(tasks)"  [disabled]="!edit" [routerLink]="[]">Update</button>
+                        <button type="button" (click)="updateTask(tasks)" [disabled]="!edit" [routerLink]="[]">Update</button>
                     </div>
                 </div>
             </div>

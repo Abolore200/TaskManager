@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { Task } from '../../models/app.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-view-task',
