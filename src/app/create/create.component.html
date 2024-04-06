@@ -10,13 +10,11 @@
             <div class="form-flex">
                 <div class="title-card form-input">
                     <label for="title">Title</label>
-                    <!-- <input type="text" id="title" [(ngModel)]="title"> -->
                     <input type="text" id="title" name="title" ngModel required #title="ngModel">
                     <span *ngIf="title.touched && title.invalid"><i class="fa-solid fa-circle-exclamation"></i> This field is required</span>
                 </div>
                 <div class="date-card form-input">
                     <label for="date">Date</label>
-                    <!-- <input type="date" id="date" [(ngModel)]="date" [min]="currentDate"> -->
                     <input type="date" id="date" [min]="currentDate" name="date" ngModel required #date="ngModel">
                     <span *ngIf="date.touched && date.invalid"><i class="fa-solid fa-circle-exclamation"></i> This field is required</span>
                 </div>
@@ -24,7 +22,6 @@
             <div class="form-flex">
                 <div class="priority-card form-input">
                     <label for="priority">Priority</label>
-                    <!-- <select name="priority" id="priority" [(ngModel)]="priority"> -->
                     <select name="priority" id="priority" name="priority" ngModel required #priority="ngModel">
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
@@ -34,7 +31,6 @@
                 </div>
                 <div class="status-card form-input">
                     <label for="status">Status</label>
-                    <!-- <select name="status" id="status" [(ngModel)]="status"> -->
                     <select name="status" id="status" ngModel required #status="ngModel">
                         <option value="pending">Pending</option>
                         <option value="in progress">In Progress</option>
@@ -46,17 +42,11 @@
             <div class="form-flex width-flex">
                 <div class="description-card form-input">
                     <label for="description">Description</label>
-                    <!-- <textarea name="description" id="description" rows="10" [(ngModel)]="description"></textarea> -->
                     <textarea name="description" id="description" rows="10" ngModel required #description="ngModel"></textarea>
                     <span *ngIf="description.touched && description.invalid"><i class="fa-solid fa-circle-exclamation"></i> This field is required</span>
                 </div>
             </div>
             <div class="form-flex width-flex" style="justify-content:center;margin-top:30px;">
-                <!-- <button 
-                class="submit-btn" 
-                type="submit" 
-                (click)="addTask()" 
-                [disabled]="!title || !date || !priority || !status || !description">Add Task</button> -->
                 <button type="submit" class="submit-btn" [disabled]="!form.valid">Add Task</button>
             </div>
         </form>

@@ -7,22 +7,12 @@
             <div class="filter-all-note radio-flex">
                 <p>Filter By Status:</p>
             </div>
-            <div class="radio-all radio-flex">
-                <input type="radio" name="status" id="all" [(ngModel)]="filterStatus" value="all">
-                <label for="all">All</label>
-            </div>
-            <div class="radio-pending radio-flex">
-                <input type="radio" name="status" id="pending" [(ngModel)]="filterStatus" value="pending">
-                <label for="pending">Pending</label>
-            </div>
-            <div class="radio-progress radio-flex">
-                <input type="radio" name="status" id="progress" [(ngModel)]="filterStatus" value="progress">
-                <label for="progress">In Progress</label>
-            </div>
-            <div class="radio-complete radio-flex">
-                <input type="radio" name="status" id="complete" [(ngModel)]="filterStatus" value="completed">
-                <label for="complete">Completed</label>
-            </div>
+            <ng-container *ngFor="let stat of status">
+                <div class="radio-{{stat.name}} radio-flex">
+                    <input type="radio" name="status" id="{{stat.name}}" [(ngModel)]="filterStatus" value="{{stat.name}}">
+                    <label for="{{stat.name}}">{{stat.name}}</label>
+                </div>
+            </ng-container>
         </div>
     </div>
     <div class="select-container">
@@ -79,6 +69,3 @@
         <p>No Task Found!</p>
     </div>
 </div>
-<ng-template #notFound>
-    <p>Not Found!</p>
-</ng-template>

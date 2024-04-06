@@ -26,6 +26,7 @@ table tbody tr td:nth-child(7) button{background-color:#d9534f;}
 .select-container{margin:10px 0 0;}
 .select-container{display:flex;align-items:center;gap:0 20px;}
 .select-priority select{padding:5px 0px 5px 10px;font-family:inherit;background-color:#f3f3f3;border:none;width:200px;}
+.radio-flex label{text-transform:capitalize;}
 
 @media screen and (max-width:768px) {
     .container{width:100%;}

@@ -16,6 +16,13 @@ export class ListsComponent implements OnInit {
   filterStatus:string = 'all'
   filterPriority:string = ''
 
+  status = [
+    {id:'1',name:'all'},
+    {id:'2',name:'pending'},
+    {id:'3',name:'in progress'},
+    {id:'4',name:'completed'}
+  ]
+
   ngOnInit(): void {
     this.app.tasksObs().subscribe(tasks => {
       if(tasks.length !== 0){
